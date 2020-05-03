@@ -15,6 +15,10 @@ class AddFeaturesToItemphotos extends Migration
     {
         Schema::table('itemphotos', function (Blueprint $table) {
             //
+            $table->foreign('item_id')
+                ->references('id')
+                ->on('items');
+
         });
     }
 
@@ -27,6 +31,7 @@ class AddFeaturesToItemphotos extends Migration
     {
         Schema::table('itemphotos', function (Blueprint $table) {
             //
+            $table->dropForeign('item_id');
         });
     }
 }

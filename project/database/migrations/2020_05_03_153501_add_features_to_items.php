@@ -15,6 +15,14 @@ class AddFeaturesToItems extends Migration
     {
         Schema::table('items', function (Blueprint $table) {
             //
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories');
+
         });
     }
 
@@ -27,6 +35,8 @@ class AddFeaturesToItems extends Migration
     {
         Schema::table('items', function (Blueprint $table) {
             //
+            $table->dropForeign('user_id');
+            $table->dropForeign('category_id');
         });
     }
 }

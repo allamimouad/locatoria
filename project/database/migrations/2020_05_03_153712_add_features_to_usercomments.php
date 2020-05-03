@@ -15,6 +15,15 @@ class AddFeaturesToUsercomments extends Migration
     {
         Schema::table('usercomments', function (Blueprint $table) {
             //
+
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
+            $table->foreign('userreviewer_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
@@ -27,6 +36,8 @@ class AddFeaturesToUsercomments extends Migration
     {
         Schema::table('usercomments', function (Blueprint $table) {
             //
+            $table->dropForeign('user_id');
+            $table->dropForeign('userreviewer_id');
         });
     }
 }

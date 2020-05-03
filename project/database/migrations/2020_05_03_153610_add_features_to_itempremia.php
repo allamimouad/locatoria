@@ -15,6 +15,11 @@ class AddFeaturesToItempremia extends Migration
     {
         Schema::table('itempremia', function (Blueprint $table) {
             //
+
+            $table->foreign('item_id')
+                ->references('id')
+                ->on('items');
+
         });
     }
 
@@ -27,6 +32,7 @@ class AddFeaturesToItempremia extends Migration
     {
         Schema::table('itempremia', function (Blueprint $table) {
             //
+            $table->dropForeign('item_id');
         });
     }
 }

@@ -15,6 +15,15 @@ class AddFeaturesToItemcomments extends Migration
     {
         Schema::table('itemcomments', function (Blueprint $table) {
             //
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
+            $table->foreign('item_id')
+                ->references('id')
+                ->on('items');
+
         });
     }
 
@@ -27,6 +36,8 @@ class AddFeaturesToItemcomments extends Migration
     {
         Schema::table('itemcomments', function (Blueprint $table) {
             //
+            $table->dropForeign('user_id');
+            $table->dropForeign('item_id');
         });
     }
 }
