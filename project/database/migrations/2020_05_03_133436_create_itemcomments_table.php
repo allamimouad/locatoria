@@ -15,6 +15,10 @@ class CreateItemcommentsTable extends Migration
     {
         Schema::create('itemcomments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('item_id');
+            $table->string('comment');
+            $table->integer('rating');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateItempremiaTable extends Migration
     {
         Schema::create('itempremia', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('item_id');
+            $table->integer('status');
             $table->timestamps();
         });
     }
